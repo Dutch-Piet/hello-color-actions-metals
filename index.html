@@ -1,13 +1,98 @@
 <html>
+<head>
   <script src="./hello.js"></script>
-  <script>
-    var setColor = function () {
-      var col = ["red", "green", "purple"];
-      var num = Math.floor(Math.random() * 3);
-      var s = `<body bgcolor=  ${col[num]} >`;
-      document.write(s);
-      document.write(`<h1> ${hello()} </h1>`);
+</head>
+<body>
+    <script>
+var setColor = function () {
+  var col = [
+    "#FFCCCC", // Light Red
+    "#CCFFCC", // Light Green
+    "#CCCCFF"  // Light Blue
+  ];
+  var num = Math.floor(Math.random() * 3);
+  document.body.style.backgroundColor = col[num];
+  document.body.innerHTML += `<h1> ${hello()} </h1>`;
     };
     window.onload = setColor;
   </script>
+
+  <div id="DMP_1" data-pym-src="https://dailymetalprice.com/prices.php?c=cu,ni,zn&u=kg"></div>
+  <script type="text/javascript" src="https://dailymetalprice.com/js/pym.min.js"></script>
+
+  <table border="1">
+    <tr>
+      <th>Material</th>
+      <th>Unit Cost ($USD/kg)</th>
+      <th>QTY (kg)</th>
+      <th>Ext. Cost ($USD)</th>
+    </tr>
+    <tr>
+      <td>Copper</td>
+      <td><input type="number" id="copperCost" value="0"></td>
+      <td><input type="number" id="copperQty" value="0"></td>
+      <td id="copperExtCost">0</td>
+    </tr>
+    <tr>
+      <td>Nickel</td>
+      <td><input type="number" id="nickelCost" value="0"></td>
+      <td><input type="number" id="nickelQty" value="0"></td>
+      <td id="nickelExtCost">0</td>
+    </tr>
+    <tr>
+      <td>Zinc</td>
+      <td><input type="number" id="zincCost" value="0"></td>
+      <td><input type="number" id="zincQty" value="0"></td>
+      <td id="zincExtCost">0</td>
+    </tr>
+    <tr id="grandTotals">
+      <td>Grand Totals</td>
+      <td></td>
+      <td id="totalQty">0</td>
+      <td id="totalCost">0</td>
+    </tr>
+  </table>
+  <button onclick="calculateExtCost()">Calculate</button>
+  <script>
+    function calculateExtCost() {
+      // Retrieve values
+      const copperCost = document.getElementById('copperCost').value;
+      const copperQty = document.getElementById('copperQty').value;
+      const nickelCost = document.getElementById('nickelCost').value;
+      const nickelQty = document.getElementById('nickelQty').value;
+      const zincCost = document.getElementById('zincCost').value;
+      const zincQty = document.getElementById('zincQty').value;
+      
+      // Calculate extended costs
+      const copperExtCost = copperCost * copperQty;
+      const nickelExtCost = nickelCost * nickelQty;
+      const zincExtCost = zincCost * zincQty;
+      
+      // Update the table with calculated values
+      document.getElementById('copperExtCost').innerText = copperExtCost.toFixed(2);
+      document.getElementById('nickelExtCost').innerText = nickelExtCost.toFixed(2);
+      document.getElementById('zincExtCost').innerText = zincExtCost.toFixed(2);
+      
+      // Sum quantities and extended costs
+      const totalQty = parseFloat(copperQty) + parseFloat(nickelQty) + parseFloat(zincQty);
+      const totalCost = copperExtCost + nickelExtCost + zincExtCost;
+  
+      // Update the table with total quantities and costs
+      document.getElementById('totalQty').innerText = totalQty.toFixed(2);
+      document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+    }
+  </script>
+      
+      <div id="DMPC_2" data-pym-src="https://dailymetalprice.com/charts.php?c=cu,ni,zn&u=kg&d=1200"></div>
+      <script type="text/javascript" src="https://dailymetalprice.com/js/pym.min.js"></script>
+    
+      <div id="DMPC_3" data-pym-src="https://dailymetalprice.com/charts.php?c=ni,zn&u=kg&d=1200"></div>
+      <script type="text/javascript" src="https://dailymetalprice.com/js/pym.min.js"></script>
+    
+      <div id="DMPC_4" data-pym-src="https://dailymetalprice.com/charts.php?c=zn&u=kg&d=1200"></div>
+      <script type="text/javascript" src="https://dailymetalprice.com/js/pym.min.js"></script>
+  
+</body>
 </html>
+
+
