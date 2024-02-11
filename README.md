@@ -1,4 +1,4 @@
-This Code starta with "hello-color-actions" code used for MIT Cloud Dev/OPS (CC-ENG-020-Dec23) for Assign 4.2
+This Code starts with "hello-color-actions" code used for MIT Cloud Dev/OPS (CC-ENG-020-Dec23) for Assign 4.2
 the code is modified for use in Assignment 8.2 to do the following;
 
 provide a custom "hello world greeting" (as in Assign 4.2) + the following;
